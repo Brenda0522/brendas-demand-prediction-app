@@ -58,7 +58,7 @@ if amr or eu or pac:
     df['year_0_estimate'][7:15] = estimate_1 * year_1_weight + estimate_2 * (1 - year_1_weight)
 
     # Display input field for actual data
-    st.text_input(label='Current year actual demand, separated by comma, 15 inputs max', placeholder='240,200,150', key='actual', on_change=None)
+    st.text_input(label='Please input actual demand for Superman, starting from week 1, separated by comma, 15 inputs max', placeholder='240,200,150', key='actual', on_change=None)
 
     # Update estimate
     try:
@@ -91,8 +91,9 @@ if amr or eu or pac:
         pass
 
     # Draw the graph
-    st.line_chart(df, x='week', y=['year_2', 'year_1', 'year_0_estimate'], color=('#ff0000', '#7777ff', '#2222ff'))
+    df.rename({'year_2':'Dwarf', 'year_1':'Princess', 'year_0_estimate':'Superman_Estimate'}, axis=1, inplace=True)
+    st.line_chart(data=df, x='week', y=['Dwarf', 'Princess', 'Superman_Estimate'], color=('#2222ff', '#7777ff', '#ff0000'))
 
     # Display estimate
     if st.checkbox('Display all estimates'):
-        df[['week', 'year_0_estimate']][:15]
+        df[['week', 'Superman_Estimate']][:15]
