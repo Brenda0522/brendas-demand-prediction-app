@@ -96,4 +96,4 @@ if amr or eu or pac:
 
     # Display estimate
     if st.checkbox('Display all estimates'):
-        df[['week', 'Superman_Estimate']][:15]
+        st.dataframe(data=df[['week', 'Superman_Estimate']][:15], hide_index=True)
