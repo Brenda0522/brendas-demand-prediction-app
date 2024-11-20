@@ -29,8 +29,8 @@ pac = st.checkbox('PAC', on_change=clear_input)
 df = pd.DataFrame(columns=['week', 'year_2', 'year_1'])
 df['week'] = [0] * 20
 df['year_2'][:15] = 0.
-df['year_2'][15:] = np.NaN
-df['year_1'][:5] = np.NaN
+df['year_2'][15:] = np.nan
+df['year_1'][:5] = np.nan
 df['year_1'][5:] = 0.
 
 if amr:
@@ -51,7 +51,7 @@ if amr or eu or pac:
     year_1_weight = st.slider(label='Last year seasonality weight', min_value=0., max_value=1., value=0.7)
 
     # Make estimate
-    df['year_0_estimate'] = np.NaN
+    df['year_0_estimate'] = np.nan
     df['year_0_estimate'][:7] = df['year_2'][:7] + price_factor * (205 - 120)
     estimate_2 = df['year_2'][7:15] + price_factor * (205 - 120)
     estimate_1 = df['year_1'][7:15] + price_factor * (205 - 200)
